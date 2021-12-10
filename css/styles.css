@@ -1,16 +1,16 @@
- <style>
-    .container{
+ .container {
       width: 900px;
       height: 100%;
       margin: 40px auto;
       border-radius: 25px;
-      border: 1px solid blueviolet;
-      
-      div {
-    background-image:url('the_walking_dead_tease.0.jpg');
-    background-repeat:no-repeat;
-    background-size:cover;
-}
+      border: 1px solid #000;
+      text-align: center;
+      padding: 50px;
     }
 
-    </style>
+  body {
+    background-image: url("the_walking_dead_tease.0.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: monospace;
+}
