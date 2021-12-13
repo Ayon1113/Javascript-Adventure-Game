@@ -7,6 +7,10 @@
       text-align: center;
       padding: 50px;
     }
+img {
+    border: 25px solid #445;
+    border-radius: 95%;
+}
 
   body {
     background-image: url("the_walking_dead_tease.0.jpg");
