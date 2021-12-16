@@ -4,107 +4,62 @@ console.log("script is loading");
 const descriptionText = document.querySelector(".adventure-description");
 const optionButtons = document.getElementsByClassName("button");
 
-let startIndex = 1;
-
-function startStory(){
-  console.log("Lee's story has begun");
-  let ids = textAdventure.map((item) => {
-return item.id;
-  });
-
-  if(startIndex > ids.length-1){
-    startIndex = 0;
-  }
-  showAdventureOptions(ids[startIndex]);
+// function that starts the game
+function startAdventure() {
+  console.log("Adventure has started");
+  showAdventureOptions(1);
 }
-
 
 // create a function that shows the description
 function showAdventureOptions(textAdventureID) {
   const newDescriptionText = textAdventure.find(gameNode => gameNode.id === textAdventureID);
-  if(!newDescriptionText.options){
-
-    document.getElementById("first_btn").style.display = "none";
-    adventureDescriptionText.innerHTML = newDescriptionText.text;
-
-    document.getElementById("second_btn").innerHTML = "Play again";
-    return;
-  }
-  adventureDescriptionText.innerText = newDescriptionText.description;
-
-  for(let i = 0; i < newDescriptionText.options.length; i++){
+  descriptionText.innerText = newDescriptionText.description;
+  // iterate through the buttons and insert the option text in each button
+  for(let i = 0; i < newDescriptionText.options.length; i++) {
+    //console.log(newDescriptionText.options[i].buttontext);
     optionButtons[i].innerText = newDescriptionText.options[i].buttontext;
-
   }
+}
 
-}
-function onNextOption(event){
-  event.preventDefault();
-  startIndex++;
-  startStory();
-}
-function onPlayAgain(event){
-  event.preventDefault();
-  document.getElementById("first_btn").style.display = "inline";
-  startIndex = 0;
-  startStory();
+// function that tracks options and passes the id to the showAdventureOptions function
 
-}
+
+// optional: function that shows end of the game
 
 
 // create and object that holds the text for our game and options and also tracks state
 const textAdventure = [
   {
     id: 1,
-    description: 'This is the story of Lee who has been surrounded by zombies while trying to gather supplies in a store, what should he do?',
+    description: 'This is the adventure of Juan, who got lost in the forest when looking for a bird to photograph. Juan needs your help to find his way out. Choose one of the options below',
     options: [
       {
-        text: "Crouch and stay silent",
+        buttontext: "Head back to where you came from",
         setState: { headback: true },
         nexttext: 2
       },
       {
-        text: "Make a break for the exit",
+        buttontext: "Look up at the sky and head towards the sun",
         nextText: 2       
       }
     ]
   },
   {
     id: 2,
-    description: 'Lee is now sneaking around the store but doesnt know which way to go',
+    description: 'great, Juan was able to find his way back, but now he reliazes that its about to rain, what should Juan do now?',
     options: [
       {
-        text: "Head towards the back of the store",
+        buttontext: "Look for shelter",
         setState: { headback: true },
         nexttext: 3
       },
       {
-        text: "Head towards the front of the store",
-        nextText: 3       
+        buttontext: "Continue heading back, and risk getting lost again",
+        nextText: 2       
       }
     ]
   },
-  {
-    id: 3,
-    description: 'Lee has made it to the back of the store but the door is being blocked by a zombie, what should he do?',
-    options: [
-      {
-        text: "Hit it with a hammer",
-        setState: { headback: true },
-        nexttext: 4
-      },
-      {
-        text: "Shoot it",
-        nextText: 4       
-      }
-    ]
-  },
-  {
-    id: 4,
-    text: "Lee has survived another day",
-    
-  }
   
 ];
 
-startStory();
+startAdventure();
