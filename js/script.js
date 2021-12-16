@@ -1,7 +1,8 @@
 console.log("script is loading");
 
-let adventureDescriptionText = document.querySelector(".adventure-description");
-let optionButtons = document.getElementsByClassName("button");
+// select the container of the game description
+const descriptionText = document.querySelector(".adventure-description");
+const optionButtons = document.getElementsByClassName("button");
 
 let startIndex = 1;
 
@@ -17,6 +18,8 @@ return item.id;
   showAdventureOptions(ids[startIndex]);
 }
 
+
+// create a function that shows the description
 function showAdventureOptions(textAdventureID) {
   const newDescriptionText = textAdventure.find(gameNode => gameNode.id === textAdventureID);
   if(!newDescriptionText.options){
@@ -48,58 +51,60 @@ function onPlayAgain(event){
 
 }
 
+
+// create and object that holds the text for our game and options and also tracks state
 const textAdventure = [
   {
     id: 1,
-    text: 'Lee while scavenging for supplies has wound up in a building surrounded by zombies, what should he do?',
+    description: 'This is the story of Lee who has been surrounded by zombies while trying to gather supplies in a store, what should he do?',
     options: [
       {
-        buttontext = 'Crouch and stay silent',
-        setState: {break: true},
+        text: "Crouch and stay silent",
+        setState: { headback: true },
         nexttext: 2
       },
       {
-        buttontext: 'Make a break for the exit',
-        nextText: 2
+        text: "Make a break for the exit",
+        nextText: 2       
       }
-     ]
+    ]
   },
   {
     id: 2,
-    text: 'Now that he has chosen to sneak around he must figure out which way to go',
+    description: 'Lee is now sneaking around the store but doesnt know which way to go',
     options: [
       {
-        buttontext = 'Head towards the back of the store',
-        setState: {break: true},
+        text: "Head towards the back of the store",
+        setState: { headback: true },
         nexttext: 3
       },
       {
-        buttontext: 'Head towards the front of the store',
-        nextText: 3
+        text: "Head towards the front of the store",
+        nextText: 3       
       }
-     ]
+    ]
   },
   {
     id: 3,
-    text: 'Lee has made it to a room in the back of the store and encountered a zombie, should he shoot it or hit it with a bat?',
+    description: 'Lee has made it to the back of the store but the door is being blocked by a zombie, what should he do?',
     options: [
       {
-        buttontext = 'Hit it with a bat',
-        setState: {break: true},
-        
+        text: "Hit it with a hammer",
+        setState: { headback: true },
+        nexttext: 4
       },
       {
-        buttontext: 'Shoot it',
-        
+        text: "Shoot it",
+        nextText: 4       
       }
-     ]
+    ]
   },
   {
     id: 4,
-    text: 'Lee lives to see another day'
-
-  },
-
+    text: "Lee has survived another day",
+    
+  }
+  
 ];
-startStory();
 
+startStory();
